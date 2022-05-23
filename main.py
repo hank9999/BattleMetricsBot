@@ -45,7 +45,7 @@ async def check(msg: Message, name: str = '', game: str = ''):
                 f'https://api.battlemetrics.com/servers?filter[search]={name}&filter[game]={game}') as resp:
             rj = await resp.json()
             if len(rj['data']) == 0:
-                await reply(msg, '搜索结果为空')
+                await msg.reply('搜索结果为空')
             elif len(rj['data']) == 1:
                 name = rj['data'][0]['attributes']['name']
                 players = rj['data'][0]['attributes']['players']
@@ -69,7 +69,7 @@ async def check(msg: Message, name: str = '', game: str = ''):
                 else:
                     text += f'IP: {ip}:{port}'
                 c.append(Module.Section(Element.Text(content=text, type=Types.Text.KMD)))
-                await reply(msg, CardMessage(c))
+                await msg.reply(CardMessage(c))
             else:
                 count = 1
                 c = Card()
@@ -99,11 +99,7 @@ async def check(msg: Message, name: str = '', game: str = ''):
                     c.append(Module.Section(Element.Text(content=text, type=Types.Text.KMD)))
                     c.append(Module.Divider())
                     count += 1
-                await reply(msg, CardMessage(c))
-
-
-async def reply(msg, text):
-    await msg.reply(text)
+                await msg.reply(CardMessage(c))
 
 
 if __name__ == '__main__':
