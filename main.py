@@ -68,7 +68,7 @@ async def check(msg: Message, name: str = '', game: str = ''):
                     text += f'IP: {address}'
                 else:
                     text += f'IP: {ip}:{port}'
-                c.append(Module.Section(Element.Text(content=text, type=Types.Text.KMD)))
+                c.append(Module.Section(Element.Text(content=text, text_type=Types.Text.KMD)))
                 await msg.reply(CardMessage(c))
             else:
                 count = 1
@@ -96,7 +96,7 @@ async def check(msg: Message, name: str = '', game: str = ''):
                         text += f'IP: {address}'
                     else:
                         text += f'IP: {ip}:{port}'
-                    c.append(Module.Section(Element.Text(content=text, type=Types.Text.KMD)))
+                    c.append(Module.Section(Element.Text(content=text, text_type=Types.Text.KMD)))
                     c.append(Module.Divider())
                     count += 1
                 await msg.reply(CardMessage(c))
